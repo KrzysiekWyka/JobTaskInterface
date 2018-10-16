@@ -1,0 +1,4 @@
+<div *ngFor="let order of orders; let i = index">
+  <app-order-result [order]="order"></app-order-result>
+  <hr *ngIf="i !== orders.length - 1" />
+</div>

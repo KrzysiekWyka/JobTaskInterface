@@ -1,0 +1,9 @@
+Price <strong>{{order.price | currency}}</strong>
+<div *ngFor="let truck of order.trucks">
+  Truck(<strong>{{truck.truckID}}</strong>)
+  <ul>
+    <li *ngFor="let item of truck.load">
+      Id: <strong>{{item.id}}</strong> Weight: <strong>{{item.weight}}</strong>
+    </li>
+  </ul>
+</div>

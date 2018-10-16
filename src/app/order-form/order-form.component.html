@@ -1,0 +1,25 @@
+<a [href]="backEndEndpoint + 'price_list.pdf'" target="_blank">Link to prices</a>
+<form [formGroup]="orderForm" (ngSubmit)="submit()" novalidate>
+  <table class="table">
+    <tr>
+      <th>Id</th>
+      <th>Weight</th>
+      <th></th>
+    </tr>
+    <tr formArrayName="items" *ngFor="let item of orderForm.get('items').controls; let i = index">
+      <ng-container [formGroupName]="i">
+        <td>
+          <input type="text" class="form-control" formControlName="id">
+        </td>
+        <td>
+          <input type="number" class="form-control" step="1" formControlName="weight">
+        </td>
+        <td>
+          <button class="btn btn-danger btn-sm" (click)="removeItem(i)" *ngIf="i !== items.length - 1">Delete</button>
+        </td>
+      </ng-container>
+    </tr>
+  </table>
+  <button class="btn btn-success" [disabled]="orderForm.invalid" (click)="addItem()" type="button">Add new item</button>
+  <button class="btn btn-primary ml-1" [disabled]="orderForm.invalid" type="submit">Send data</button>
+</form>
